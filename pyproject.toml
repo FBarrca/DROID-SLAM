@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61", "wheel", "torch", "ninja"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "droid-backends"
+version = "0.1.0"
+description = "Droid Backends"
+authors = [{name = "Your Name", email = "your.email@example.com"}]
+readme = "README.md"
+requires-python = ">=3.10.0"
+license = "MIT"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "torch>=2.7.0",
+    "torchvision>=0.22.0",
+    "torch-scatter>=2.1.2",
+    "lietorch>=0.3",
+]
+
+
+[tool.uv]
+build-constraint-dependencies = ["setuptools>=60.0.0"]
+find-links = ["https://data.pyg.org/whl/torch-2.7.0+cu128.html"]
+
+no-build-isolation-package = ["torch_scatter", "droid_backends", "lietorch"]
+lietorch = { path = "thirdparty/lietorch" }
+torch_scatter = { path = "thirdparty/pytorch_scatter" }
